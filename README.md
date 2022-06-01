@@ -50,9 +50,8 @@ Simple React App that showcasing how you can implement Google Sign-in method usi
 - Update: Dependencies
 - fix: Minor bugs
 
-## [Live example]()
+## [Live example](https://safetify-panel.vercel.app/)
 
-## [CodeSandbox](https://codesandbox.io/s/react-material-ui-dashboard-99vt4) (code only - not authorized)
 
 ### License
 
