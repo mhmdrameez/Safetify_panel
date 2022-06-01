@@ -7,7 +7,7 @@ export default function Footer() {
     <Typography variant='body2' color='text.secondary' align='center' sx={{ pt: 4 }}>
       {'Copyright © '}
       <Link color='inherit' href='https://m.com/'>
-        Safetify
+        Safetif
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>
