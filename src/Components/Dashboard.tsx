@@ -183,9 +183,7 @@ icon={   <FaRunning />} />
 <ActivityCard
 activityName='Idle'
 icon={<MdAccessibility/>} />
-<ActivityCard
-activityName='Crash'
-icon={<FaCarCrash/>} />
+
 
                   </Route>
                   {/* Orders */}
