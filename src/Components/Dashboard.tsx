@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import Button from '@mui/material/Button'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -25,25 +24,23 @@ import Avatar from '@mui/material/Avatar'
 import MenuIcon from '@mui/icons-material/Menu'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { FaWalking,FaRunning,FaCarCrash} from 'react-icons/fa'
+import { FaWalking, FaRunning, FaCarCrash } from 'react-icons/fa'
 import { GiPerson } from 'react-icons/gi'
 
-import { MdAccessibility } from "react-icons/md";
+import { MdAccessibility } from 'react-icons/md'
 
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import Collapse from '@mui/material/Collapse'
 
-
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import SearchBar from "material-ui-search-bar";
-
-
-
-
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import SearchBar from 'material-ui-search-bar'
 
 import { mainListItems } from './listItems'
 import SignOut from './SignOut'
@@ -51,10 +48,7 @@ import Footer from './Footer'
 import Title from './Title'
 
 import { auth } from '../Firebase'
-import ActivityCard from './ActivityCard';
-
-
-
+import ActivityCard from './ActivityCard'
 
 const drawerWidth = 240
 
@@ -106,56 +100,51 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme()
 
-
 interface food {
-  name: string;
-  calories: string;
-  fat: string;
-  carbs: string;
-  protein: string;
+  name: string
+  calories: string
+  fat: string
+  carbs: string
+  protein: string
 }
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650
   }
-});
+})
 
 const originalRows: food[] = [
-  { name: "Adarsh", calories: "Walking", fat: "Travelling", carbs: "Idle", protein: "Walking" },
-  { name: "Ashsish", calories: "Type While Walk ", fat: "Idle", carbs: "Cycling", protein: "Running" },
-  { name: "Tushar", calories: "Typing", fat: "Walking", carbs: "", protein: "" },
-  { name: "Abin", calories: "Idle", fat: "Cycling", carbs: "", protein: "" },
-  { name: "Rameez", calories: "Cycling", fat: "Idle", carbs: "", protein: "" },
-  { name: "Ron", calories: "Idle", fat: "Running", carbs: "", protein: "" }
-];
-
-
+  { name: 'Adarsh', calories: 'Walking', fat: 'Travelling', carbs: 'Idle', protein: 'Walking' },
+  { name: 'Ashsish', calories: 'Type While Walk ', fat: 'Idle', carbs: 'Cycling', protein: 'Running' },
+  { name: 'Tushar', calories: 'Typing', fat: 'Walking', carbs: 'Type While Walk', protein: 'Idle' },
+  { name: 'Abin', calories: 'Idle', fat: 'Cycling', carbs: 'Idle', protein: 'Travelling' },
+  { name: 'Rameez', calories: 'Cycling', fat: 'Idle', carbs: 'Travelling', protein: 'Type While Walk' },
+  {name: 'Ron',calories: 'Idle',fat: 'Running',carbs: 'Talking',protein: 'Idle'}
+]
 
 export default function Dashboard() {
   const [currentUser] = useAuthState(auth)
   const [open, setOpen] = useState(true)
   const toggleDrawer = () => setOpen((prev) => !prev)
 
-
-  const [rows, setRows] = useState<food[]>(originalRows);
-  const [searched, setSearched] = useState<string>("");
-  const classes = useStyles();
+  const [rows, setRows] = useState<food[]>(originalRows)
+  const [searched, setSearched] = useState<string>('')
+  const classes = useStyles()
 
   const requestSearch = (searchedVal: string) => {
     const filteredRows = originalRows.filter((row) => {
-      return row.name.toLowerCase().includes(searchedVal.toLowerCase());
-    });
-    setRows(filteredRows);
-  };
+      return row.name.toLowerCase().includes(searchedVal.toLowerCase())
+    })
+    setRows(filteredRows)
+  }
 
   const cancelSearch = () => {
-    setSearched("");
-    requestSearch(searched);
-  };
+    setSearched('')
+    requestSearch(searched)
+  }
 
-
-
+  const [opens, setOpens] = React.useState(false)
 
   return (
     <Router>
@@ -207,7 +196,6 @@ export default function Dashboard() {
             <Divider />
             <List>{mainListItems}</List>
             <Divider />
-            
           </Drawer>
           <Box
             component='main'
@@ -225,7 +213,7 @@ export default function Dashboard() {
                 <Switch>
                   {/* Dashboard */}
                   <Route path='/dashboard'>
-    {/* <ActivityCard
+                    {/* <ActivityCard
 activityName='Walking'
 icon={  <FaWalking />} />
     <ActivityCard
@@ -235,64 +223,53 @@ icon={   <FaRunning />} />
 activityName='Idle'
 icon={<MdAccessibility/>} /> */}
 
-<br/>
-<br/>
-<br/>
+                    <br />
+                    <br />
+                    <br />
 
-<Paper>
-        <SearchBar
-          value={searched}
-          onChange={(searchVal) => requestSearch(searchVal)}
-          onCancelSearch={() => cancelSearch()}
-        />
-        <TableContainer>
-          <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Person</TableCell>
-                <TableCell align="right">Current State</TableCell>
-                <TableCell align="right">Prev State&nbsp;(30s)</TableCell>
-                <TableCell align="right">Prev&nbsp;(5min)</TableCell>
-                <TableCell align="right">Prev&nbsp;(10min)</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+                    <Paper>
+                      <SearchBar
+                        value={searched}
+                        onChange={(searchVal) => requestSearch(searchVal)}
+                        onCancelSearch={() => cancelSearch()}
+                      />
+                      <TableContainer>
+                        <Table className={classes.table} aria-label='simple table'>
+                          <TableHead>
+                            <TableRow>
+                              <TableCell>Person</TableCell>
+                              <TableCell align='right'>Current State</TableCell>
+                              <TableCell align='right'>Prev State&nbsp;(30s)</TableCell>
+                              <TableCell align='right'>Prev&nbsp;(5min)</TableCell>
+                              <TableCell align='right'>Prev&nbsp;(10min)</TableCell>
+                            </TableRow>
+                          </TableHead>
+                          <TableBody>
+                            {rows.map((row) => (
+                              <TableRow key={row.name}>
+                                <TableCell component='th' scope='row'>
+                                  {/* <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
+                                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                                  </IconButton> */}
 
+                                  {row.name}
+                                </TableCell>
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                <TableCell align='right'>{row.calories}</TableCell>
+                                <TableCell align='right'>{row.fat}</TableCell>
+                                <TableCell align='right'>{row.carbs}</TableCell>
+                                <TableCell align='right'>{row.protein}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                        
+                      </TableContainer>
+                      
+                    </Paper>
                   </Route>
                   {/* Orders */}
-            
+
                   {/* Redirect none matches routes */}
                   <Route render={() => <Redirect to='/dashboard' />} />
                 </Switch>
