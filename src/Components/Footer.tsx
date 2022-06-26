@@ -5,11 +5,11 @@ import Typography from '@mui/material/Typography'
 export default function Footer() {
   return (
     <Typography variant='body2' color='text.secondary' align='center' sx={{ pt: 4 }}>
-      {'Copyright © '}
-      <Link color='inherit' href='https://safetify-panel.vercel.app'>
+     
+      {/* <Link color='inherit' href='https://safetify-panel.vercel.app'>
        
-      </Link>{' '}
-      {new Date().getFullYear()}.
+      </Link>{''} */}
+     
     </Typography>
   )
 }
