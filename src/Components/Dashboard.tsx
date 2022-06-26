@@ -123,7 +123,7 @@ const useStyles = makeStyles({
 
 const originalRows: food[] = [
   { name: "Adarsh", calories: "Walking", fat: "Travelling", carbs: "Idle", protein: "" },
-  { name: "Ashsish", calories: "Type While Walk ", fat: "Idle", carbs: "", protein: "" },
+  { name: "Ashsish", calories: "Type While Walk ", fat: "Idle", carbs: "Cycling", protein: "" },
   { name: "Tushar", calories: "Typing", fat: "Walking", carbs: "", protein: "" },
   { name: "Abin", calories: "Idle", fat: "Cycling", carbs: "", protein: "" },
   { name: "Rameez", calories: "Cycling", fat: "Idle", carbs: "", protein: "" },
